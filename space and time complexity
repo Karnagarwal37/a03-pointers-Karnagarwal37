@@ -1,0 +1,70 @@
+Here are the implementations for each of the functions (swap, findMax, and reverseArray) along with their respective time and space complexities.
+
+1. Swap Function:
+This function swaps the values of two integers using pointers.
+
+c
+Copy code
+// Function to swap two integers using pointers
+void swap(int *a, int *b) {
+    int temp = *a;  // Store the value of *a in a temporary variable
+    *a = *b;        // Assign the value of *b to *a
+    *b = temp;      // Assign the value of temp (which was *a) to *b
+}
+Time Complexity:
+The time complexity is O(1) because we are performing a constant number of operations (assignments) regardless of input size.
+
+Space Complexity:
+The space complexity is O(1) because the only extra space used is for a temporary variable temp, which does not depend on the size of the input.
+
+2. FindMax Function:
+This function finds the maximum value in an array using pointers.
+
+c
+Copy code
+// Function to find the maximum value in an array using pointers
+int findMax(int *arr, int length) {
+    int max = arr[0];  // Initialize max as the first element of the array
+    for (int i = 1; i < length; i++) {  // Iterate through the rest of the array
+        if (*(arr + i) > max) {  // Use pointer arithmetic to access array elements
+            max = *(arr + i);  // Update max if a larger value is found
+        }
+    }
+    return max;  // Return the maximum value found
+}
+Time Complexity:
+The time complexity is O(n), where n is the length of the array. We must traverse through the entire array once to find the maximum value.
+
+Space Complexity:
+The space complexity is O(1), as only a few integer variables (max and the loop counter) are used, regardless of the size of the array.
+
+3. ReverseArray Function:
+This function reverses an array using pointers.
+
+c
+Copy code
+// Function to reverse an array using pointers
+void reverseArray(int *arr, int length) {
+    int start = 0, end = length - 1;  // Initialize pointers for the start and end
+    while (start < end) {  // Continue swapping until the pointers meet
+        int temp = *(arr + start);  // Use pointer arithmetic to access elements
+        *(arr + start) = *(arr + end);  // Swap the elements at start and end
+        *(arr + end) = temp;  // Complete the swap
+        start++;  // Move the start pointer forward
+        end--;    // Move the end pointer backward
+    }
+}
+Time Complexity:
+The time complexity is O(n), where n is the length of the array. The loop runs through half of the array, performing constant-time operations per iteration.
+
+Space Complexity:
+The space complexity is O(1) because only a few integer variables (start, end, and temp) are used, regardless of the size of the array.
+
+Summary of Time and Space Complexities
+Function	Time Complexity	Space Complexity
+swap()	O(1)	O(1)
+findMax()	O(n)	O(1)
+reverseArray()	O(n)	O(1)
+swap(): Constant time and space because it just swaps two elements.
+findMax(): Linear time as it needs to iterate through the array once; constant space.
+reverseArray(): Linear time to reverse the array; constant space as it modifies the array in-place.
